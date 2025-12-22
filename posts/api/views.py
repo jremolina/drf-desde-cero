@@ -25,8 +25,6 @@ from posts.api.serializers import PostSerializer
 #         # return self.get(request)
 
 
-
-
 # ====================== USO DE ViewSet ==============
 
 # class PostViewSet(ViewSet):    
