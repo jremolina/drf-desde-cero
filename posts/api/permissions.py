@@ -6,4 +6,7 @@ class IsAdminOrReadOnly(BasePermission):
             return True
         else:
             return request.user.is_staff
+
+# con esta configuracion de permisos todos los usuarios pueden leer
+# pero solo los admins pueden editar, publicar, eliminar
         
