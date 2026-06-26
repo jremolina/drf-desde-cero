@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import datetime
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,8 +45,28 @@ INSTALLED_APPS = [
 
 ]
 
+
 REST_FRAMEWORK = {
+    # configuration for drf spectacular
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
+    # configuration for JWT authentication
+    'DEFAULT_AUTHENTICATION_CLASSES': (        
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )    
+}
+
+# configuration for JWT authentication
+# REST_FRAMEWORK = {    
+#     'DEFAULT_AUTHENTICATION_CLASSES': (        
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     )    
+# }
+
+SIMPLE_JWT = {
+  'ACCESS_TOKEN_LIFETIME' : datetime.timedelta(minutes=60),
+  'REFRESH_TOKEN_LIFETIME' : datetime.timedelta(days=7),
+  
 }
 
 MIDDLEWARE = [
@@ -130,4 +151,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Custom user model
 AUTH_USER_MODEL = 'user.User'
